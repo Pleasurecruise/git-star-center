@@ -3,7 +3,7 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - main
+      - main  # 可以根据需要更改为你使用的主分支名称
 
 jobs:
   deploy:
@@ -13,15 +13,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
+    - name: Set up Node.js 22
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  # 设置你需要的 Node.js 版本
+        node-version: '22'  # 设置 Node.js 22 版本
+    
+    - name: Install pnpm
+      run: |
+        npm install -g pnpm  # 安装 pnpm
     
     - name: Install dependencies
-      run: |
-        npm install
-    
+      run: pnpm install  # 使用 pnpm 安装依赖
+
+    - name: Build project
+      run: pnpm run build  # 构建 Vite 项目
+
     - name: Vercel Action Deploy
       uses: amondnet/vercel-action@v20
       with:

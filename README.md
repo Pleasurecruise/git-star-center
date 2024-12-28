@@ -10,7 +10,7 @@
 
 **占坑开发中...**
 
-由于该项目使用Vercel部署，如果你也想将你的项目置于社区主页，可以点击[这里](https://github.com/Pleasurecruise/git-star-center/blob/main/src/page/dashboard/index.tsx)直接提交PR！
+由于该项目使用Vercel部署，如果你也想将你的项目置于社区主页，可以点击[这里](https://github.com/Pleasurecruise/git-star-center/blob/master/src/page/dashboard/index.tsx)直接提交PR！
 
 如果你擅长**界面设计或者前端开发**，也欢迎加入一起完善该项目！！
 
@@ -50,6 +50,7 @@
 3. [ ] 搜索功能
 4. [ ] 分类功能(根据主要编程语言)
 5. [ ] 仓库个性化推荐
+6. [ ] 社区主页设计
 
 ## 特别说明
 

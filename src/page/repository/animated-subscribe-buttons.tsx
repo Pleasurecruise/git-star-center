@@ -67,7 +67,7 @@ const SubscribeButtons: React.FC = () => {
         <div className="flex space-x-4">
             <Button
                 onClick={() => handleClick('star')}
-                variant={interaction.isStar ? 'active' : 'default'}
+                variant={interaction.isStar ? 'outline' : 'default'}
                 className="flex items-center space-x-2"
             >
                 <StarIcon className="w-4 h-4" />
@@ -76,7 +76,7 @@ const SubscribeButtons: React.FC = () => {
 
             <Button
                 onClick={() => handleClick('fork')}
-                variant={interaction.isFork ? 'active' : 'default'}
+                variant={interaction.isFork ? 'outline' : 'default'}
                 className="flex items-center space-x-2"
             >
                 <GitFork className="w-4 h-4" />
@@ -85,7 +85,7 @@ const SubscribeButtons: React.FC = () => {
 
             <Button
                 onClick={() => handleClick('watch')}
-                variant={interaction.isWatch ? 'active' : 'default'}
+                variant={interaction.isWatch ? 'outline' : 'default'}
                 className="flex items-center space-x-2"
             >
                 <Eye className="w-4 h-4" />
@@ -94,7 +94,7 @@ const SubscribeButtons: React.FC = () => {
 
             <Button
                 onClick={() => handleClick('follow')}
-                variant={interaction.isFollow ? 'active' : 'default'}
+                variant={interaction.isFollow ? 'outline' : 'default'}
                 className="flex items-center space-x-2"
             >
                 <UserPlus className="w-4 h-4" />

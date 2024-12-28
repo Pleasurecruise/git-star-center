@@ -19,7 +19,7 @@ import { NavActions } from "@/components/layout/nav-actions.tsx";
 import { Welcome } from "@/page/dashboard/welcome/Welcome.tsx";
 import { MagicCard } from "@/components/ui/magic-card";
 import Autoplay from "embla-carousel-autoplay";
-import theme from "tailwindcss/defaultTheme";
+import { useTheme } from "@/components/layout/theme-provider";
 
 const imageData = [
     {
@@ -45,6 +45,7 @@ const imageData = [
 ];
 
 const Dashboard = () => {
+    const { theme } = useTheme();
     return (
         <div className="flex flex-col h-screen">
             {/* Header */}

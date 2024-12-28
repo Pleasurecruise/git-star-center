@@ -37,7 +37,7 @@ const MailBox = () => {
         getAccount()
     }, [])
 
-    const handleTabChange = (value) => {
+    const handleTabChange = (value: string) => {
         setActiveTab(value)
         if (value === 'unread') {
             getMails({status: 0})
@@ -46,7 +46,7 @@ const MailBox = () => {
         }
     }
 
-    const handleMailRead = (mail) => {
+    const handleMailRead = (mail:any) => {
         if (!mail.hasRead) {
             readMail({id: mail.id})
         }

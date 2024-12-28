@@ -1,5 +1,3 @@
-"use client"
-
 import {
     BadgeInfo,
     ChevronsUpDown,
@@ -96,13 +94,17 @@ export function NavUser({
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem {...supportDialog.triggerProps}>
-                                <Headset className={'size-4 mr-2'}/>
-                                技术支持
+                            <DropdownMenuItem>
+                                <button {...supportDialog.triggerProps} className="flex items-center w-full">
+                                    <Headset className={'size-4 mr-2'}/>
+                                    技术支持
+                                </button>
                             </DropdownMenuItem>
-                            <DropdownMenuItem  {...aboutDialog.triggerProps}>
-                                <BadgeInfo className={'size-4 mr-2'}/>
-                                关 于
+                            <DropdownMenuItem>
+                                <button {...aboutDialog.triggerProps} className="flex items-center w-full">
+                                    <BadgeInfo className={'size-4 mr-2'}/>
+                                    关 于
+                                </button>
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />

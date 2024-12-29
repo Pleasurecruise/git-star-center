@@ -34,7 +34,7 @@ jobs:
         password: ${{secrets.SERVER_PASSWORD}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
-        source: "dist"
+        source: "/"
         target: ${{secrets.SERVER_PATH}}
 
 #    - name: Vercel Action Deploy

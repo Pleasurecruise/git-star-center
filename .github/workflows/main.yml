@@ -21,10 +21,10 @@ jobs:
         node-version: '22'
 
     - name: Install dependencies
-      run: pnpm install
+      run: npm install
 
     - name: Build
-      run: pnpm build
+      run: npm build
 
     - name: copy dist via ssh password
       uses: appleboy/scp-action@master

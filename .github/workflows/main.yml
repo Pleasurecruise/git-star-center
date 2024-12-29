@@ -1,14 +1,16 @@
-name: Deploy to Vercel
+name: Deploy to Server
 
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main  # 可以根据需要更改为你使用的主分支名称
+    branches: ["main"]
+    paths:
+      - "src"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -16,13 +18,30 @@ jobs:
     - name: Set up Node.js 22
       uses: actions/setup-node@v3
       with:
-        node-version: '22'  # 设置 Node.js 22 版本
+        node-version: '22'
 
-    - name: Vercel Action Deploy
-      uses: amondnet/vercel-action@v25
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Build
+      run: pnpm build
+
+    - name: copy dist via ssh password
+      uses: appleboy/scp-action@master
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}  # 你需要设置 VERCEL_TOKEN 为 GitHub Secret
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  # 你的 Vercel 组织 ID
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}  # 你的 Vercel 项目 ID
-        vercel-flag-yes: true
+        host: ${{secrets.SERVER_HOST}}
+        username: ${{secrets.SERVER_USER}}
+        password: ${{secrets.SERVER_PASSWORD}}
+        key: ${{secrets.SSH_PRIVATE_KEY}}
+        port: 22
+        source: "dist"
+        target: ${{secrets.SERVER_PATH}}
+
+#    - name: Vercel Action Deploy
+#      uses: amondnet/vercel-action@v25
+#      with:
+#        github-token: ${{ secrets.GITHUB_TOKEN }}
+#        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+#        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+#        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+#        vercel-flag-yes: true

@@ -5,7 +5,7 @@ on:
   push:
     branches: ["master"]
     paths:
-      - "web/src"
+      - "web/src/**"
 
 jobs:
   deploy:

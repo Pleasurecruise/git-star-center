@@ -1,6 +1,6 @@
 # Git Star Center
 
-<img src="src/assets/logo.jpg" width="200" />
+<img src="web/src/assets/logo.jpg" width="200" />
 
 个人GitHub项目互助社区！
 
@@ -39,9 +39,9 @@
 
 ## 效果以及功能展示
 
-| ![Example 1](src/assets/example/login.jpg) | ![Example 2](src/assets/example/help.png)   |
+| ![Example 1](web/src/assets/example/login.jpg) | ![Example 2](web/src/assets/example/help.png)   |
 |--------------------------------------------|---------------------------------------------|
-| ![Example 2](src/assets/example/repo.png)  | ![Example 2](src/assets/example/search.png) |
+| ![Example 2](web/src/assets/example/repo.png)  | ![Example 2](web/src/assets/example/search.png) |
 
 ## TODO
 

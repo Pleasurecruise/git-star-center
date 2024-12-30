@@ -71,7 +71,6 @@
 ## 备注
 
 - 本项目为个人项目，仅供学习参考使用，不得用于商业用途
-- **后端项目暂未开源**，如有需要请联系作者
 - 本项目仍在开发中，如有问题请提交issue
 
 ## 参考项目
@@ -79,5 +78,4 @@
 - [xryder-web](https://github.com/pipijoe/xryder-web)
 
 - [spring-boot-react-oauth2-social-login-demo](https://github.com/callicoder/spring-boot-react-oauth2-social-login-demo)
-
 

@@ -4,6 +4,9 @@ import { parseQuery } from '@/utils'
 import { persist } from "zustand/middleware";
 import {AxiosError} from "axios";
 
+/**
+ * 用于储存自己仓库的数据
+ */
 export interface AccountState {
     id: number
     username: string
@@ -21,6 +24,9 @@ export interface AccountState {
     repoUpdateTime: string
 }
 
+/**
+ * 用于储存目标仓库的数据
+ */
 interface targetAccountState {
     id: number
     username: string

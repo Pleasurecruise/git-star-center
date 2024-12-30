@@ -3,7 +3,9 @@ import { persist } from "zustand/middleware";
 import api from "@/utils/axios.ts";
 import {AxiosError} from "axios";
 
-
+/**
+ * 用于存储与某用户的交互关系
+ */
 export interface InteractionState {
     sourceUserId: number;
     targetUserId: number;

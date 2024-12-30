@@ -51,7 +51,7 @@ const repositorySchema = z.object({
 });
 
 const Account = () => {
-    const { account, updateAccount, changeRepository, saving, changing } = useAccountStore();
+    const { account, getAccount, updateAccount, changeRepository, saving, changing } = useAccountStore();
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -78,7 +78,10 @@ const Account = () => {
         changeRepository(params).then(
             (res) => {
                 if (res.code === 1) {
-                    toast.success("保存成功！");
+                    getAccount().then(() => {
+                        toast.success("保存成功！");
+                    });
+                    changeRepositoryDialog.dismiss();
                 }
                 changeRepositoryDialog.dismiss()
             },

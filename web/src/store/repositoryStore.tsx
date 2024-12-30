@@ -3,6 +3,9 @@ import { persist } from "zustand/middleware";
 import api from '@/utils/axios';
 import { parseQuery } from '@/utils';
 
+/**
+ * 用于储存分页的仓库数据
+ */
 export interface RepositoryState {
     id: number;
     userId: number;

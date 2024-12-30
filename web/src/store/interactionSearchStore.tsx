@@ -33,6 +33,9 @@ export interface IInteractionSearch {
     updatedAt: string;
 }
 
+/**
+ * 用于存储分页的交互数据
+ */
 interface StoreState {
     interactionSearch: InteractionSearchState[];
     iInteractionSearch: IInteractionSearch[];

@@ -32,10 +32,8 @@ function App() {
                             <Route path="/mail" element={isAuthenticated ? <MailBox /> : <Navigate to="/login" />} />
                             <Route path="/monitor" element={isAuthenticated ? <Monitor /> : <Navigate to="/login" />} />
                             <Route path="/repository" element={isAuthenticated ? <Repository /> : <Navigate to="/login" />} />
-                            <Route path="/repository" element={isAuthenticated ? <Repository /> : <Navigate to="/login" />} />
                             <Route path="/star" element={isAuthenticated ? <Star /> : <Navigate to="/login" />} />
                             <Route path="/project" element={isAuthenticated ? <Project /> : <Navigate to="/login" />} />
-                            <Route path="/star" element={isAuthenticated ? <Star /> : <Navigate to="/login" />} />
                             <Route path="/me" element={isAuthenticated ? <ToMe /> : <Navigate to="/login" />} />
                             <Route path="/my" element={isAuthenticated ? <I /> : <Navigate to="/login" />} />
                             <Route path="/500" element={<ErrorPage />} />

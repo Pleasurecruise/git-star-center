@@ -34,7 +34,5 @@ jobs:
         password: ${{secrets.SERVER_PASSWORD}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
-        source: |
-          web/
-          web/dist/
+        source: "web/"
         target: ${{secrets.SERVER_PATH}}

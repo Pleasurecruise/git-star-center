@@ -1,6 +1,4 @@
-import React from 'react';
 import { GITHUB_AUTH_URL } from '@/utils/env';
-import { Navigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import BoxReveal from "@/components/ui/box-reveal";
@@ -9,18 +7,9 @@ import githubLogo from '@/assets/github.png';
 import logoImg from '@/assets/logo.jpg';
 import { cn } from "@/lib/utils";
 
-interface LoginProps {
-    authenticated: boolean;
-}
-
 const currentYear = new Date().getFullYear();
 
-const Login: React.FC<LoginProps> = ({ authenticated }) => {
-
-    if (authenticated) {
-        return <Navigate to="/" state={{ from: 'login' }} />;
-    }
-
+function Login() {
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <div>
@@ -108,6 +97,6 @@ const Login: React.FC<LoginProps> = ({ authenticated }) => {
             </footer>
         </div>
     );
-};
+}
 
 export default Login;

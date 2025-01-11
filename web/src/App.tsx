@@ -25,8 +25,9 @@ function App() {
                 <Router>
                     <Index>
                         <Routes>
-                            <Route path="/login" element={<Login authenticated={isAuthenticated} />} />
+                            <Route path="/login" element={<Login />} />
                             <Route path="/oauth2/redirect" element={<OAuth2RedirectHandler />} />
+                            <Route path="/500" element={<ErrorPage />} />
                             <Route path="/" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
                             <Route path="/account" element={isAuthenticated ? <Account /> : <Navigate to="/login" />} />
                             <Route path="/mail" element={isAuthenticated ? <MailBox /> : <Navigate to="/login" />} />
@@ -36,7 +37,16 @@ function App() {
                             <Route path="/project" element={isAuthenticated ? <Project /> : <Navigate to="/login" />} />
                             <Route path="/me" element={isAuthenticated ? <ToMe /> : <Navigate to="/login" />} />
                             <Route path="/my" element={isAuthenticated ? <I /> : <Navigate to="/login" />} />
-                            <Route path="/500" element={<ErrorPage />} />
+
+                            {/*<Route path="/" element={<Dashboard />} />*/}
+                            {/*<Route path="/account" element={<Account />} />*/}
+                            {/*<Route path="/mail" element={<MailBox />} />*/}
+                            {/*<Route path="/monitor" element={<Monitor />} />*/}
+                            {/*<Route path="/repository" element={<Repository />} />*/}
+                            {/*<Route path="/star" element={<Star />} />*/}
+                            {/*<Route path="/project" element={<Project />} />*/}
+                            {/*<Route path="/me" element={<ToMe />} />*/}
+                            {/*<Route path="/my" element={<I />} />*/}
                             {/* 可以添加更多路由 */}
                         </Routes>
                     </Index>

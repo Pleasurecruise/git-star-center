@@ -8,7 +8,7 @@ import {Avatar, AvatarFallback, AvatarImage,} from "@/components/ui/avatar"
 import {Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator} from "@/components/ui/breadcrumb";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
+import {DialogContent, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {SidebarTrigger} from "@/components/ui/sidebar";
 import {ScrollArea} from "@/components/ui/scroll-area";
 import {Separator} from "@/components/ui/separator";
@@ -141,7 +141,7 @@ const Account = () => {
                         <CardHeader>
                             <CardTitle>账户设置</CardTitle>
                             <CardDescription>
-                                仓库互动统计，绑定目标仓库(一个月只能更改一次)
+                                仓库互动统计，绑定目标仓库
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
@@ -291,9 +291,6 @@ const Account = () => {
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>修改仓库</DialogTitle>
-                        <DialogDescription>
-                            一个月之内只能修改一次
-                        </DialogDescription>
                     </DialogHeader>
                     <div>
                         <Form {...changeRepositoryForm}>

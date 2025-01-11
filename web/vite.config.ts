@@ -13,21 +13,11 @@ export default defineConfig({
   server:{
     port: 5173,
     host: 'localhost',
-    hmr: {
-      protocol: 'ws',
-      host: 'localhost',
-      port: 5173,
+    proxy: {
+        '/api': {
+            target: 'http://localhost:8080',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
     }
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:8080',
-    //     changeOrigin: true,
-    //     rewrite: (path) => {
-    //       const newPath = path.replace(/^\/api/, '');
-    //       console.log(`Original path: ${path}, Rewritten path: ${newPath}`);
-    //       return newPath;
-    //     },
-    //   },
-    // }
-  }
+  }}
 })

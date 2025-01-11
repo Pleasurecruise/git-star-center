@@ -11,8 +11,13 @@ export const useAuthStore = create<UserState>()(
     persist(
         (set) => ({
             token: '',
-            setToken: (token: string) => set({token}),
-            logout: () => set({token: ''})
+            setToken: (token: string) => {
+                set({ token });
+                setTimeout(() => set({ token: '' }), 3600000); // 1 hour = 3600000 ms
+            },
+            logout: () => {
+                set({ token: '' });
+            }
         }),
         {
             name: 'auth-storage', // unique name for the storage

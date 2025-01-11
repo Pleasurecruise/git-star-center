@@ -15,7 +15,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: copy via ssh password
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'
+
+    - name: Install dependencies and build
+      run: |
+        cd web
+        npm install
+        npm run build
+
+    - name: Copy via SSH
       uses: appleboy/scp-action@master
       with:
         host: ${{secrets.SERVER_HOST}}
@@ -23,14 +34,7 @@ jobs:
         password: ${{secrets.SERVER_PASSWORD}}
         key: ${{secrets.SSH_PRIVATE_KEY}}
         port: 22
-        source: "web/"
+        source: |
+          web/
+          web/dist/
         target: ${{secrets.SERVER_PATH}}
-
-#    - name: Vercel Action Deploy
-#      uses: amondnet/vercel-action@v25
-#      with:
-#        github-token: ${{ secrets.GITHUB_TOKEN }}
-#        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-#        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-#        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-#        vercel-flag-yes: true

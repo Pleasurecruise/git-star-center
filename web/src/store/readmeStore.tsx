@@ -5,7 +5,7 @@ import { marked } from "marked";
 interface ReadmeState {
     readmeContent: string;
     readmeError: boolean;
-    fetchReadme: (repoAuth: string, repoName: string) => Promise<void>;
+    fetchReadme: (params: { repoAuth: string, repoName: string }) => Promise<void>;
 }
 
 export const useReadmeStore = create<ReadmeState>()(
@@ -13,8 +13,8 @@ export const useReadmeStore = create<ReadmeState>()(
         (set) => ({
             readmeContent: "",
             readmeError: false,
-            fetchReadme: async (repoAuth, repoName) => {
-                const apiUrl = `https://api.github.com/repos/${repoAuth}/${repoName}/readme`;
+            fetchReadme: async (params) => {
+                const apiUrl = `https://api.github.com/repos/${params.repoAuth}/${params.repoName}/readme`;
                 try {
                     const response = await fetch(apiUrl);
                     if (!response.ok) {
@@ -23,7 +23,13 @@ export const useReadmeStore = create<ReadmeState>()(
                     const data = await response.json();
                     const content = atob(data.content);
                     const decodedContent = new TextDecoder("utf-8").decode(new Uint8Array([...content].map(char => char.charCodeAt(0))));
-                    const htmlContent = marked(decodedContent);
+                    const updatedContent = decodedContent.replace(/!\[([^\]]*)]\(([^)]+)\)/g, (match, alt, path) => {
+                        if (!path.startsWith('http')) {
+                            return `![${alt}](https://raw.githubusercontent.com/${params.repoAuth}/${params.repoName}/main/${path})`;
+                        }
+                        return match;
+                    });
+                    const htmlContent = marked(updatedContent);
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                     // @ts-expect-error
                     set({ readmeContent: htmlContent, readmeError: false });

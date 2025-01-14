@@ -18,8 +18,8 @@ import { Separator } from "@/components/ui/separator";
 import { NavActions } from "@/components/layout/nav-actions.tsx";
 import { Welcome } from "@/page/dashboard/welcome/Welcome.tsx";
 import { MagicCard } from "@/components/ui/magic-card";
-import Autoplay from "embla-carousel-autoplay";
 import { useTheme } from "@/components/layout/theme-provider";
+import Autoplay from "embla-carousel-autoplay";
 
 const imageData = [
     {

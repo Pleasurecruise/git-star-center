@@ -25,14 +25,15 @@ import SubscribeButtons from "@/page/repository/animated-subscribe-buttons.tsx";
 const Project = () => {
     const { targetAccount } = useAccountStore();
     const { readmeContent, fetchReadme } = useReadmeStore();
-    const { interaction, getInteraction } = useInteractionStore();
+    const { interaction, syncData, getInteraction } = useInteractionStore();
 
     useEffect(() => {
         if (targetAccount.repoAuth && targetAccount.repoName) {
-            fetchReadme(targetAccount.repoAuth, targetAccount.repoName);
+            syncData({ repoAuth: targetAccount.repoAuth, repoName: targetAccount.repoName});
+            fetchReadme({ repoAuth: targetAccount.repoAuth, repoName: targetAccount.repoName});
             getInteraction({ repoAuth: targetAccount.repoAuth, repoName: targetAccount.repoName });
         }
-    }, [targetAccount.repoAuth, targetAccount.repoName, fetchReadme, getInteraction]);
+    }, [targetAccount.repoAuth, targetAccount.repoName, syncData, fetchReadme, getInteraction]);
 
     return (
         <div>

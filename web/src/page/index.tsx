@@ -5,7 +5,7 @@
  * Project: xryder
  * Description: This is a rapid development template for middle and backend UI based on vite, react, tailwindcss and shadcn.
  */
-
+import React from "react";
 import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/layout/app-sidebar.tsx"
 import { useLocation } from 'react-router-dom';

@@ -23,6 +23,7 @@ interface StoreState {
     repoAuth: string;
     repoName: string;
     setInteraction: (interaction: InteractionState) => void;
+    syncData: (params: { repoAuth: string, repoName: string }) => void;
     toggleStar: () => Promise<void>;
     toggleFork: () => Promise<void>;
     toggleWatch: () => Promise<void>;
@@ -47,6 +48,24 @@ export const useInteractionStore = create<StoreState>()(
             repoAuth: "",
             repoName: "",
             setInteraction: (interaction) => set({ interaction }),
+            syncData: async (params) => {
+                try {
+                    await api.post('/repositories/sync', null,{
+                        params: {
+                            repoAuth: params.repoAuth,
+                            repoName: params.repoName,
+                        },
+
+                    });
+                } catch (error) {
+                    console.error("Error syncing interaction data:", error);
+                    if (error instanceof AxiosError) {
+                        set({ error: error.response?.data?.msg || error.message });
+                    } else if (error instanceof Error) {
+                        set({ error: error.message });
+                    }
+                }
+            },
             getInteraction: async (params) => {
                 set({ isLoading: true, error: null });
                 try {

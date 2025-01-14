@@ -138,7 +138,7 @@ const StarComponent = () => {
                                                 starCount={repo.starCount}
                                                 forkCount={repo.forkCount}
                                                 watchCount={repo.watchCount}
-                                                followerCount={repo.followerCount} // 修改为 followerCount
+                                                followerCount={repo.followerCount}
                                             />
                                         </div>
                                     ))}
@@ -167,7 +167,7 @@ const StarComponent = () => {
                                                 starCount={repo.starCount}
                                                 forkCount={repo.forkCount}
                                                 watchCount={repo.watchCount}
-                                                followerCount={repo.followerCount} // 修改为 followerCount
+                                                followerCount={repo.followerCount}
                                             />
                                         </div>
                                     ))}
@@ -196,7 +196,7 @@ const StarComponent = () => {
                                                 starCount={repo.starCount}
                                                 forkCount={repo.forkCount}
                                                 watchCount={repo.watchCount}
-                                                followerCount={repo.followerCount} // 修改为 followerCount
+                                                followerCount={repo.followerCount}
                                             />
                                         </div>
                                     ))}

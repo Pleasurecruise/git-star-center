@@ -26,7 +26,7 @@ const Repository = () => {
     const { readmeContent, readmeError, fetchReadme } = useReadmeStore();
 
     useEffect(() => {
-        fetchReadme(account.repoAuth, account.repoName);
+        fetchReadme({ repoAuth:account.repoAuth, repoName:account.repoName});
     }, [account.repoAuth, account.repoName, fetchReadme]);
 
     return (

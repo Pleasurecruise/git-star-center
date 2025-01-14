@@ -134,7 +134,7 @@ export function NavUser({
                     <DialogHeader>
                         <DialogTitle><Headset className={'text-sky-500 inline mr-2 mb-1'}/>技术支持</DialogTitle>
                         <DialogDescription>
-                            发送问题邮件至pleasure@yiming1234.cn,备注Git Star Center
+                            发送问题邮件至pleasure@yiming1234.cn, 备注Git Star Center
                         </DialogDescription>
                     </DialogHeader>
                 </DialogContent>

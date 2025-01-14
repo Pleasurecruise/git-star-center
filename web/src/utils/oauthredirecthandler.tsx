@@ -20,7 +20,9 @@ const OAuth2RedirectHandler: React.FC = () => {
         console.log('token:', token);
         try {
             setToken(token);
-            navigate('/', { replace: true });
+            setTimeout(() => {
+                navigate('/', { replace: true });
+            }, 0);
         } catch (error) {
             console.log('error:', error);
             navigate('/login', { state: { showErrorModal: true, error } });

@@ -7,30 +7,22 @@ const api = axios.create({
     baseURL: API_BASE_URL,
     timeout: 600000
 })
-const token = useAuthStore.getState().token;
-const whiteList: string[] = [
-]
 
 // request拦截器
 api.interceptors.request.use(
     (config) => {
-        console.log('Sending request:', config); // 添加日志
-        let isToken = true
-        whiteList.some((v) => {
-            if (config.url && config.url == v) {
-                return isToken = false
-            }
-        })
-        if (token && isToken) {
+        const token = useAuthStore.getState().token;
+        if (token) {
             config.headers['token'] = 'Bearer ' + token;
         } else {
             window.location.href = '/login'
             return Promise.reject(new Error('No token'))
         }
+        console.log('Sending request:', config);
         return config
     },
     (error: AxiosError) => {
-        console.log(error) // for debug
+        console.log(error)
         Promise.reject(error)
     }
 )
@@ -40,7 +32,7 @@ api.interceptors.response.use(
     result => {
         const setError = useErrorStore.getState().setError;
         if (result.data.code === 1) {
-            console.log('Response:', result.data); // for debug
+            console.log('Response:', result.data);
             return result.data;
         } else {
             setError(result.data.msg)
@@ -48,7 +40,7 @@ api.interceptors.response.use(
         return Promise.reject(result.data)
     },
     err => {
-        console.log('Error:', err); // for debug
+        console.log('Error:', err);
         const setError = useErrorStore.getState().setError;
         if (err.response?.status === 401) {
             useAuthStore.getState().logout();

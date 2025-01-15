@@ -12,15 +12,17 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb.tsx";
 import Marquee from "@/components/ui/marquee";
+import { AlertDialog, AlertDialogContent, AlertDialogTitle, AlertDialogDescription } from "@/components/ui/alert-dialog.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card.tsx";
 import { ScrollArea } from "@/components/ui/scroll-area.tsx";
 import BlurFade from "@/components/ui/blur-fade.tsx";
+import { Button } from "@/components/ui/button.tsx";
+import { Star as StarIcon, GitFork, Eye, UserPlus } from 'lucide-react';
 import { useAccountStore } from "@/store/userStore.tsx";
 import { useRepositoryStore } from "@/store/repositoryStore.tsx";
 import { useInteractionStore } from "@/store/interactionStore.tsx";
-import { Button } from "@/components/ui/button.tsx";
-import { Star as StarIcon, GitFork, Eye, UserPlus } from 'lucide-react';
+import { useErrorStore } from "@/store/errorStore.tsx";
 
 const RepoStats = ({ starCount, forkCount, watchCount, followerCount }: { starCount: number, forkCount: number, watchCount: number, followerCount: number }) => (
     <div className="flex justify-between mt-4 text-sm text-gray-500 dark:text-gray-400">
@@ -44,17 +46,21 @@ const RepoStats = ({ starCount, forkCount, watchCount, followerCount }: { starCo
 );
 
 const StarComponent = () => {
+    const { setError } = useErrorStore();
     const { getTargetAccount } = useAccountStore();
     const { repository, getRepository, page, totalPages } = useRepositoryStore();
-    const { getInteraction } = useInteractionStore();
+    const { isLoading ,syncData, getInteraction } = useInteractionStore();
     const navigate = useNavigate();
 
-    const handleRedirect = (repoAuth:string, repoName:string) => {
-        getTargetAccount({ repoAuth, repoName }).then(() => {
-            getInteraction({ repoAuth, repoName }).then(() => {
-                navigate(`/project`);
+    const handleRedirect = (repoAuth: string, repoName: string) => {
+        getTargetAccount({ repoAuth, repoName })
+            .then(() => syncData({ repoAuth, repoName }))
+            .then(() => getInteraction({ repoAuth, repoName }))
+            .then(() => { navigate(`/project`); })
+            .catch((error) => {
+                setError(error);
+                console.error("Error during redirection process:", error);
             });
-        });
     };
 
     useEffect(() => {
@@ -209,8 +215,18 @@ const StarComponent = () => {
                     </Card>
                 </div>
             </ScrollArea>
+            <AlertDialog open={isLoading}>
+                <AlertDialogContent>
+                    <AlertDialogTitle>正在重定向</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        <div className="flex items-center space-x-2">
+                            <span>数据请求中，请耐心等待...</span>
+                        </div>
+                    </AlertDialogDescription>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 };
 
-export default StarComponent; // 或者使用您选择的新名称
+export default StarComponent;

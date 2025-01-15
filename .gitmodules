@@ -1,3 +1,4 @@
 [submodule "server"]
 	path = server
-	url = ../GitStarCenter
+	url = https://github.com/Pleasurecruise/GitStarCenter.git
+	branch = main

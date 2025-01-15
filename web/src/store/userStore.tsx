@@ -131,7 +131,7 @@ export const useAccountStore = create<StoreState>()(
                 }
             },
             getTargetAccount: async (params) => {
-                set({error: null});
+                set({ isLoading: true, error: null });
                 try {
                     const data = await api.get('/account/target?repoAuth=' + params.repoAuth + '&repoName=' + params.repoName);
                     set({

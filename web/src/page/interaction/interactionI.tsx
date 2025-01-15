@@ -6,6 +6,16 @@ import Empty from "@/components/layout/empty.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
 import Pager from '@/page/interaction/pager';
 import InteractiveHoverButton from "@/components/ui/interactive-hover-button.tsx";
+import {useErrorStore} from "@/store/errorStore.tsx";
+import {useAccountStore} from "@/store/userStore.tsx";
+import {useInteractionStore} from "@/store/interactionStore.tsx";
+import {useNavigate} from "react-router-dom";
+import {
+    AlertDialog,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogTitle
+} from "@/components/ui/alert-dialog.tsx";
 
 interface InteractionMeListProps {
     pageSize: number;
@@ -92,7 +102,22 @@ const InteractionIList: React.FC<InteractionMeListProps> = ({ pageSize }) => {
         }
     };
 
-    // 渲染表格
+    const { setError } = useErrorStore();
+    const { getTargetAccount } = useAccountStore();
+    const { syncData, getInteraction } = useInteractionStore();
+    const { isLoading: interactionLoading } = useInteractionStore();
+    const navigate = useNavigate();
+    const handleRedirect = (repoAuth:string, repoName:string) => {
+        getTargetAccount({ repoAuth, repoName })
+            .then(() => syncData({ repoAuth, repoName }))
+            .then(() => getInteraction({ repoAuth, repoName }))
+            .then(() => { navigate(`/project`); })
+            .catch((error) => {
+                setError(error);
+                console.error("Error during redirection process:", error);
+            });
+    };
+
     const renderTable = (data: InteractionSearchState[]) => (
         <Table>
             <TableHeader>
@@ -115,7 +140,9 @@ const InteractionIList: React.FC<InteractionMeListProps> = ({ pageSize }) => {
                         <TableCell className="font-semibold">{item.username}</TableCell>
                         <TableCell>{item.repoAuth}/{item.repoName}</TableCell>
                         <TableCell>
-                            <InteractiveHoverButton text={"看看他"} onClick={() => window.location.href = `https://github.com/${item.repoAuth}/${item.repoName}`}/>
+                            <InteractiveHoverButton
+                                text={"看看他"}
+                                onClick={() => handleRedirect(item.repoAuth, item.repoName)} />
                         </TableCell>
                     </TableRow>
                 ))}
@@ -168,6 +195,16 @@ const InteractionIList: React.FC<InteractionMeListProps> = ({ pageSize }) => {
                 total={total}
                 onPageChange={handlePageChange}
             />
+            <AlertDialog open={interactionLoading}>
+                <AlertDialogContent>
+                    <AlertDialogTitle>正在重定向</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        <div className="flex items-center space-x-2">
+                            <span>数据请求中，请耐心等待...</span>
+                        </div>
+                    </AlertDialogDescription>
+                </AlertDialogContent>
+            </AlertDialog>
         </div>
     );
 };

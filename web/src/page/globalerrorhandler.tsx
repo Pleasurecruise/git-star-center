@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import useErrorStore from "@/store/errorStore"
+import { useErrorStore } from "@/store/errorStore"
 import {AlertCircle} from "lucide-react";
 import {AnimatePresence, motion} from "framer-motion";
 

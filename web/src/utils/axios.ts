@@ -1,5 +1,5 @@
 import axios, {AxiosError} from 'axios';
-import useErrorStore from '@/store/errorStore';
+import { useErrorStore } from '@/store/errorStore';
 import { useAuthStore } from '@/store/tokenStore';
 import {API_BASE_URL} from "@/utils/env.ts";
 

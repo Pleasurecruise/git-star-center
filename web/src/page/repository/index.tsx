@@ -20,6 +20,7 @@ import {useReadmeStore} from "@/store/readmeStore.tsx";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar.tsx";
 import {CircleUser} from "lucide-react";
 import InteractiveHoverButton from "@/components/ui/interactive-hover-button.tsx";
+import {Navigate} from "react-router-dom";
 
 const Repository = () => {
     const { account } = useAccountStore();
@@ -28,6 +29,10 @@ const Repository = () => {
     useEffect(() => {
         fetchReadme({ repoAuth:account.repoAuth, repoName:account.repoName});
     }, [account.repoAuth, account.repoName, fetchReadme]);
+
+    if (!account.repoAuth || !account.repoName) {
+        return <Navigate to="/account" />;
+    }
 
     return (
         <div>

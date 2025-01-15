@@ -49,6 +49,7 @@ export const useInteractionStore = create<StoreState>()(
             repoName: "",
             setInteraction: (interaction) => set({ interaction }),
             syncData: async (params) => {
+                set({ isLoading: true, error: null });
                 try {
                     await api.post('/repositories/sync', null,{
                         params: {

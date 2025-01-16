@@ -1,4 +1,4 @@
-import ScriptCopyBtn from "@/components/ui/script-copy-btn";
+import ScriptCopyBtn from "@/components/magicui/script-copy-btn.tsx";
 
 export function ScriptCopyBtnDemo({ repoAuth, repoName }: { repoAuth: string; repoName: string }) {
     const customCommandMap = {

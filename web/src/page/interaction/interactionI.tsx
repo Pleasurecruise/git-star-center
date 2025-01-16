@@ -5,7 +5,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "
 import Empty from "@/components/layout/empty.tsx";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
 import Pager from '@/page/interaction/pager';
-import InteractiveHoverButton from "@/components/ui/interactive-hover-button.tsx";
+import InteractiveHoverButton from "@/components/magicui/interactive-hover-button.tsx";
 import {useErrorStore} from "@/store/errorStore.tsx";
 import {useAccountStore} from "@/store/userStore.tsx";
 import {useInteractionStore} from "@/store/interactionStore.tsx";

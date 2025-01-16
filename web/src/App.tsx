@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider.tsx";
 import Index from "@/page";
 import ErrorPage from "@/page/500";
 import Dashboard from "@/page/dashboard";
+import Announcement from "@/page/dashboard/announcement";
 import Account from "@/page/account";
 import MailBox from "@/page/mailbox";
 import Login from "@/page/login/index";
@@ -28,6 +29,7 @@ function App() {
                             <Route path="/500" element={<ErrorPage />} />
 
                             <Route path="/" element={<Dashboard />} />
+                            <Route path="/announcement" element={<Announcement />} />
                             <Route path="/account" element={<Account />} />
                             <Route path="/mail" element={<MailBox />} />
                             <Route path="/monitor" element={<Monitor />} />

@@ -12,14 +12,14 @@ import {Helmet} from "react-helmet-async";
 import {ScriptCopyBtnDemo} from "@/page/repository/url-copy/url-copy";
 import {Label} from "@/components/ui/label.tsx";
 import {ScrollArea} from "@/components/ui/scroll-area.tsx";
-import NumberTicker from "@/components/ui/number-ticker.tsx";
-import TypingAnimation from "@/components/ui/typing-animation.tsx";
+import NumberTicker from "@/components/magicui/number-ticker.tsx";
+import TypingAnimation from "@/components/magicui/typing-animation.tsx";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.tsx";
 import {useAccountStore} from "@/store/userStore";
 import {useReadmeStore} from "@/store/readmeStore.tsx";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar.tsx";
 import {CircleUser} from "lucide-react";
-import InteractiveHoverButton from "@/components/ui/interactive-hover-button.tsx";
+import InteractiveHoverButton from "@/components/magicui/interactive-hover-button.tsx";
 import {Navigate} from "react-router-dom";
 
 const Repository = () => {

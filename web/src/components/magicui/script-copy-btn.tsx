@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button.tsx";
+import { cn } from "@/lib/utils.ts";
 import { motion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import { useTheme } from "next-themes";

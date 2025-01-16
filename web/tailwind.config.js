@@ -123,6 +123,14 @@ export default {
     				to: {
     					transform: 'translateY(calc(-100% - var(--gap)))'
     				}
+    			},
+    			orbit: {
+    				'0%': {
+    					transform: 'rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg))'
+    				},
+    				'100%': {
+    					transform: 'rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))'
+    				}
     			}
     		},
     		animation: {
@@ -132,7 +140,8 @@ export default {
     			'fade-up': 'fade-up 0.7s ease-out',
     			'fade-in': 'fade-in 1s ease-out forwards',
     			marquee: 'marquee var(--duration) infinite linear',
-    			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
+    			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+    			orbit: 'orbit calc(var(--duration)*1s) linear infinite'
     		}
     	}
     },

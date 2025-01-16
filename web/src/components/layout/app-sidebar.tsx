@@ -36,6 +36,10 @@ const data = {
                     url: "/",
                 },
                 {
+                    title: "社区公告",
+                    url: "/announcement",
+                },
+                {
                     title: "我的仓库",
                     url: "/repository",
                 },
@@ -48,7 +52,7 @@ const data = {
             isActive: true,
             items: [
                 {
-                    title: "大厅",
+                    title: "互动大厅",
                     url: "/star",
                 },
                 {

@@ -16,7 +16,7 @@ import { AlertDialog, AlertDialogContent, AlertDialogTitle, AlertDialogDescripti
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.tsx";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card.tsx";
 import { ScrollArea } from "@/components/ui/scroll-area.tsx";
-import BlurFade from "@/components/ui/blur-fade.tsx";
+import BlurFade from "@/components/magicui/blur-fade.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import { Star as StarIcon, GitFork, Eye, UserPlus } from 'lucide-react';
 import { useAccountStore } from "@/store/userStore.tsx";
@@ -76,7 +76,7 @@ const StarComponent = () => {
     return (
         <div>
             <Helmet>
-                <title>大厅</title>
+                <title>互动大厅</title>
             </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">
@@ -89,7 +89,7 @@ const StarComponent = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block" />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>大厅</BreadcrumbPage>
+                                <BreadcrumbPage>互动大厅</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>

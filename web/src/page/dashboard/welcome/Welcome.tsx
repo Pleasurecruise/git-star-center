@@ -1,4 +1,4 @@
-import BlurFade from "@/components/ui/blur-fade";
+import BlurFade from "@/components/magicui/blur-fade.tsx";
 
 export function Welcome() {
     return (

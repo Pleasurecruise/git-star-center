@@ -1,8 +1,8 @@
 import { GITHUB_AUTH_URL } from '@/utils/env';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import BoxReveal from "@/components/ui/box-reveal";
-import DotPattern from "@/components/ui/dot-pattern";
+import BoxReveal from "@/components/magicui/box-reveal.tsx";
+import DotPattern from "@/components/magicui/dot-pattern.tsx";
 import githubLogo from '@/assets/github.png';
 import logoImg from '@/assets/logo.jpg';
 import { cn } from "@/lib/utils";
